@@ -31,14 +31,12 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public List<ItemDTO> getAllItems() {
-        /*List<ItemEntity> itemEntities = itemDAO.findAll();
-        return itemMapping.asItemDTOList(itemEntities);*/
-        return null;
+        List<ItemEntity> itemEntities = itemDAO.findAll();
+        return itemMapping.asItemDTOList(itemEntities);
     }
 
     @Override
     public ItemStatus getItem(String itemCode) {
-
         return null;
     }
 
