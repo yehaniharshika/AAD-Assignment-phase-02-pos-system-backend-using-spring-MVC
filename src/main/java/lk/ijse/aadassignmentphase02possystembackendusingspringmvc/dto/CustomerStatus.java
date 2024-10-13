@@ -1,4 +1,6 @@
 package lk.ijse.aadassignmentphase02possystembackendusingspringmvc.dto;
 
-public interface CustomerStatus {
+import java.io.Serializable;
+
+public interface CustomerStatus extends Serializable,SuperDTO {
 }
