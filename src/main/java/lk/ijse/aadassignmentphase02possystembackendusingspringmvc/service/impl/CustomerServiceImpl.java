@@ -5,6 +5,7 @@ import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.dao.CustomerDA
 import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.dto.CustomerStatus;
 import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.dto.impl.CustomerDTO;
 import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.entity.CustomerEntity;
+import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.exception.CustomerNotFoundException;
 import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.exception.DataPersistException;
 import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.service.CustomerService;
 import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.util.Mapping;
@@ -13,6 +14,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 @Transactional
 public class CustomerServiceImpl implements CustomerService {
@@ -47,6 +50,16 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void updateCustomer(String customerId, CustomerDTO customerDTO) {
+        Optional<CustomerEntity> findCustomer = customerDAO.findById(customerId);
+        if (!findCustomer.isPresent()){
+            throw new CustomerNotFoundException("customer not found");
+        }else {
+            findCustomer.get().setName(customerDTO.getName());
+            findCustomer.get().setAddress(customerDTO.getAddress());
+            findCustomer.get().setContactNumber(customerDTO.getContactNumber());
+            findCustomer.get().setEmail(customerDTO.getEmail());
+        }
+
 
     }
 

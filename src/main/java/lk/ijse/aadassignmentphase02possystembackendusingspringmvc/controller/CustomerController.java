@@ -3,6 +3,7 @@ package lk.ijse.aadassignmentphase02possystembackendusingspringmvc.controller;
 import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.customStatusCodes.SelectedErrorStatus;
 import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.dto.CustomerStatus;
 import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.dto.impl.CustomerDTO;
+import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.exception.CustomerNotFoundException;
 import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.exception.DataPersistException;
 import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,5 +35,21 @@ public class CustomerController {
     @GetMapping(value = "/{customerId}",produces = MediaType.APPLICATION_JSON_VALUE)
     public CustomerStatus getSelectedCustomer(@PathVariable("customerId") String customerId){
         return customerService.getCustomer(customerId);
+    }
+
+    @PutMapping(value = "/{customerId}",consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> updateCustomer(@PathVariable("customerId") String customerId,@RequestBody CustomerDTO updateCustomerDTO){
+        try {
+            if (updateCustomerDTO == null){
+                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            }
+            customerService.updateCustomer(customerId,updateCustomerDTO);
+            return new ResponseEntity<>("update successfully",HttpStatus.OK);
+        }catch (CustomerNotFoundException e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }
