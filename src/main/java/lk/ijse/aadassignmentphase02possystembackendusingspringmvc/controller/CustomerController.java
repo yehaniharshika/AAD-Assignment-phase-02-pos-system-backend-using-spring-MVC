@@ -12,6 +12,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RequestMapping("api/v1/customers")
 @RestController
 public class CustomerController {
@@ -20,7 +22,7 @@ public class CustomerController {
     private CustomerService customerService;
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
-    produces = MediaType.APPLICATION_JSON_VALUE)
+            produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> saveCustomer(@RequestBody CustomerDTO customerDTO){
         try {
             customerService.saveCustomer(customerDTO);
@@ -35,6 +37,11 @@ public class CustomerController {
     @GetMapping(value = "/{customerId}",produces = MediaType.APPLICATION_JSON_VALUE)
     public CustomerStatus getSelectedCustomer(@PathVariable("customerId") String customerId){
         return customerService.getCustomer(customerId);
+    }
+
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<CustomerDTO> getAllCustomers(){
+        return customerService.getAllCustomers();
     }
 
     @PutMapping(value = "/{customerId}",consumes = MediaType.APPLICATION_JSON_VALUE)

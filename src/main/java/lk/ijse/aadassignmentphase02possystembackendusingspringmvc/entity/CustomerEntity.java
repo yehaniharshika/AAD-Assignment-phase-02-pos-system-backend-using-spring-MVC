@@ -1,5 +1,6 @@
 package lk.ijse.aadassignmentphase02possystembackendusingspringmvc.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,6 +20,7 @@ public class CustomerEntity implements SuperEntity{
     private String address;
     private String contactNumber;
     private String email;
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer",fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<OrderEntity> orders;
 }

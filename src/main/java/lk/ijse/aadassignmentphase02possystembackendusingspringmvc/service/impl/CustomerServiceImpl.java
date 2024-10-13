@@ -34,7 +34,9 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public List<CustomerDTO> getAllCustomers() {
-        return null;
+        List<CustomerEntity> customerEntities = customerDAO.findAll();
+        //convert entities to DTOs
+        return customerMapping.asCustomerDTOList(customerEntities);
     }
 
     @Override
