@@ -1,5 +1,6 @@
 package lk.ijse.aadassignmentphase02possystembackendusingspringmvc.service.impl;
 
+import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.customStatusCodes.SelectedErrorStatus;
 import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.dao.ItemDAO;
 import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.dto.ItemStatus;
 import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.dto.impl.ItemDTO;
@@ -37,7 +38,12 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public ItemStatus getItem(String itemCode) {
-        return null;
+        if (itemDAO.existsById(itemCode)){
+            ItemEntity selectedItem = itemDAO.getReferenceById(itemCode);
+            return itemMapping.toItemDTO(selectedItem);
+        }else {
+            return new SelectedErrorStatus(2,"select Item not found");
+        }
     }
 
     @Override

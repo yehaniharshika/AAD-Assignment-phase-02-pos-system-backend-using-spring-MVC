@@ -1,5 +1,6 @@
 package lk.ijse.aadassignmentphase02possystembackendusingspringmvc.controller;
 
+import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.dto.ItemStatus;
 import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.dto.impl.ItemDTO;
 import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.exception.DataPersistException;
 import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.service.ItemService;
@@ -39,5 +40,11 @@ public class ItemController {
     public List<ItemDTO> getAllItems(){
         logger.debug("call GetMapping to get all items");
         return itemService.getAllItems();
+    }
+
+    @GetMapping(value = "/{itemCode}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ItemStatus getSelectedItem(@PathVariable("itemCode") String itemCode){
+        logger.debug("call GetMapping to select the item");
+        return itemService.getItem(itemCode);
     }
 }
