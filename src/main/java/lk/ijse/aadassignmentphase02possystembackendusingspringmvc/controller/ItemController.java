@@ -3,10 +3,12 @@ package lk.ijse.aadassignmentphase02possystembackendusingspringmvc.controller;
 import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.dto.ItemStatus;
 import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.dto.impl.ItemDTO;
 import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.exception.DataPersistException;
+import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.exception.ItemNotFoundException;
 import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.service.ItemService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -46,5 +48,21 @@ public class ItemController {
     public ItemStatus getSelectedItem(@PathVariable("itemCode") String itemCode){
         logger.debug("call GetMapping to select the item");
         return itemService.getItem(itemCode);
+    }
+
+    @PutMapping(value = "/{itemCode}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> updateItem(@PathVariable("itemCode") String itemCode,@RequestBody ItemDTO updateItemDTO){
+        try {
+            if (updateItemDTO == null){
+                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            }
+            itemService.updateItem(itemCode,updateItemDTO);
+            return new ResponseEntity<>("Item update successfully",HttpStatus.OK);
+        }catch (ItemNotFoundException e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }

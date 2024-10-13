@@ -6,6 +6,7 @@ import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.dto.ItemStatus
 import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.dto.impl.ItemDTO;
 import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.entity.ItemEntity;
 import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.exception.DataPersistException;
+import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.exception.ItemNotFoundException;
 import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.service.ItemService;
 import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.util.Mapping;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 @Transactional
 public class ItemServiceImpl implements ItemService {
@@ -48,6 +51,14 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public void updateItem(String itemCode, ItemDTO itemDTO) {
+        Optional<ItemEntity> findItem = itemDAO.findById(itemCode);
+        if (!findItem.isPresent()){
+            throw new ItemNotFoundException("Item not found");
+        }else {
+            findItem.get().setItemName(itemDTO.getItemName());
+            findItem.get().setUnitPrice(itemDTO.getUnitPrice());
+            findItem.get().setQtyOnHand(itemDTO.getQtyOnHand());
+        }
 
     }
 

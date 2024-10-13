@@ -61,8 +61,6 @@ public class CustomerServiceImpl implements CustomerService {
             findCustomer.get().setContactNumber(customerDTO.getContactNumber());
             findCustomer.get().setEmail(customerDTO.getEmail());
         }
-
-
     }
 
     @Override
