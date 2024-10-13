@@ -1,5 +1,6 @@
 package lk.ijse.aadassignmentphase02possystembackendusingspringmvc.service.impl;
 
+import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.customStatusCodes.SelectedErrorStatus;
 import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.dao.CustomerDAO;
 import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.dto.CustomerStatus;
 import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.dto.impl.CustomerDTO;
@@ -35,7 +36,13 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CustomerStatus getCustomer(String customerId) {
-        return null;
+        if (customerDAO.existsById(customerId)){
+            CustomerEntity selectedCustomer = customerDAO.getReferenceById(customerId);
+            return customerMapping.toCustomerDTO(selectedCustomer);
+        }else {
+            return new SelectedErrorStatus(2,"selected customer not found");
+        }
+
     }
 
     @Override
