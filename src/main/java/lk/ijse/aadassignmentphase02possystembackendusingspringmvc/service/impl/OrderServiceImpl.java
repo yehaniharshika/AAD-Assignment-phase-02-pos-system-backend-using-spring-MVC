@@ -25,6 +25,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void saveOrder(OrderDTO orderDTO) {
         OrderEntity savedOrder = orderDAO.save(orderMapping.toOrderEntity(orderDTO));
+
         if (savedOrder == null){
             throw new DataPersistException("Order not saved");
         }
