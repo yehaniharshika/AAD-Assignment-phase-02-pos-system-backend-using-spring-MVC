@@ -73,4 +73,16 @@ public class CustomerServiceImpl implements CustomerService {
         }
 
     }
+
+    @Override
+    public String generateNextCustomerId() {
+        String lastCustomerId = customerDAO.getLastCustomerId();
+
+        if (lastCustomerId != null){
+            int nextId = Integer.parseInt(lastCustomerId.split("-")[1])+1;
+            return String.format("C00-%03d", nextId);
+        }else {
+            return "C00-001";
+        }
+    }
 }

@@ -73,4 +73,10 @@ public class CustomerController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @GetMapping(value = "/generate-next-customer-id",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> generateNextCustomerId(){
+        String nextCustomerId = customerService.generateNextCustomerId();
+        return new ResponseEntity<>(nextCustomerId,HttpStatus.OK);
+    }
 }
