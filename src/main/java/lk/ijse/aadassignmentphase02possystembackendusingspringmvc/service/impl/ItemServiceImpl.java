@@ -72,4 +72,15 @@ public class ItemServiceImpl implements ItemService {
         }
 
     }
+
+    @Override
+    public String generateNextItemCode() {
+        String  lastItemCode = itemDAO.getLastItemCode();
+        if (lastItemCode != null){
+            int nextCode = Integer.parseInt(lastItemCode.split("-")[1])+1;
+            return String.format("I00-%03d",nextCode);
+        }else {
+            return  "I00-001";
+        }
+    }
 }

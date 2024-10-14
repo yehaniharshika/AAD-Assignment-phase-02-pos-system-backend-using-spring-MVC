@@ -12,5 +12,7 @@ public interface ItemService {
     void updateItem(String itemCode,ItemDTO itemDTO);
     void deleteItem(String itemCode);
 
+    //method to generate next item code
+    String generateNextItemCode();
 
 }

@@ -78,4 +78,14 @@ public class ItemController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @GetMapping(value = "/generate-next-item-code",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> generateNextItemCode(){
+        try {
+            String nextItemCode = itemService.generateNextItemCode();
+            return new ResponseEntity<>(nextItemCode,HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }
