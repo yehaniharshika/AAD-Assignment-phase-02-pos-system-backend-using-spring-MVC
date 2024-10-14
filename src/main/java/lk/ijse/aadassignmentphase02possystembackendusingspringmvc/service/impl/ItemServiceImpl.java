@@ -64,6 +64,12 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public void deleteItem(String itemCode) {
+        Optional<ItemEntity> findItemToDelete = itemDAO.findById(itemCode);
+        if (!findItemToDelete.isPresent()){
+            throw new ItemNotFoundException(itemCode+" item not found to delete");
+        }else {
+            itemDAO.deleteById(itemCode);
+        }
 
     }
 }

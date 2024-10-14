@@ -65,4 +65,17 @@ public class ItemController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @DeleteMapping(value = "/{itemCode}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> deleteItem(@PathVariable("itemCode") String itemCode){
+        try {
+            itemService.deleteItem(itemCode);
+            return new ResponseEntity<>("deleted successfully",HttpStatus.NO_CONTENT);
+        }catch (ItemNotFoundException e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }
