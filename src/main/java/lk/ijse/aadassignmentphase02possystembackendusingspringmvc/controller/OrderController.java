@@ -19,7 +19,7 @@ public class OrderController {
     private OrderService orderService;
     static Logger logger = LoggerFactory.getLogger(OrderController.class);
 
-    
+
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
     produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> saveOrder(@RequestBody OrderDTO orderDTO){
@@ -38,14 +38,15 @@ public class OrderController {
     public ResponseEntity<String> generateNextOrderId(){
         try {
             String nextOrderId = orderService.generateNextOrderId();
+
             return new ResponseEntity<>(nextOrderId,HttpStatus.OK);
         }catch (Exception e){
             return  new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-    @GetMapping(value = "/{orderId}",produces = MediaType.APPLICATION_JSON_VALUE)
+    /*@GetMapping(value = "/{orderId}",produces = MediaType.APPLICATION_JSON_VALUE)
     public OrderStatus getSelectedOrder(@PathVariable("orderId") String orderId){
         return orderService.getOrder(orderId);
-    }
+    }*/
 }

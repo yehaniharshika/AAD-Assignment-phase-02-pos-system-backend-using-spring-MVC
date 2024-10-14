@@ -39,12 +39,12 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrderStatus getOrder(String orderId) {
-        if (orderDAO.existsById(orderId)){
+        /*if (orderDAO.existsById(orderId)){
             OrderEntity selectedOrder = orderDAO.getReferenceById(orderId);
             return orderMapping.toOrderDTO(selectedOrder); // No need for casting
         } else {
             return new SelectedErrorStatus(2, "Selected order not found");
-        }
+        }*/
     }
 
 
