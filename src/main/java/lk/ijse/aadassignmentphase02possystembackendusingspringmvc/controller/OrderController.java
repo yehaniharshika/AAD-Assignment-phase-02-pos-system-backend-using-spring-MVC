@@ -45,8 +45,8 @@ public class OrderController {
         }
     }
 
-    /*@GetMapping(value = "/{orderId}",produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/{orderId}",produces = MediaType.APPLICATION_JSON_VALUE)
     public OrderStatus getSelectedOrder(@PathVariable("orderId") String orderId){
         return orderService.getOrder(orderId);
-    }*/
+    }
 }
