@@ -14,6 +14,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
+import java.util.Properties;
 
 @Configuration
 @ComponentScan(basePackages = "lk.ijse.aadassignmentphase02possystembackendusingspringmvc")
@@ -45,9 +46,16 @@ public class WebAppRootConfig {
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
 
         factory.setJpaVendorAdapter(vendorAdapter);
-
         factory.setPackagesToScan("lk.ijse.aadassignmentphase02possystembackendusingspringmvc.entity");
         factory.setDataSource(dataSource());
+
+        Properties jpaProperties = new Properties();
+        jpaProperties.put("hibernate.dialect", "org.hibernate.dialect.MySQL8Dialect"); // Hibernate dialect for MySQL
+        jpaProperties.put("hibernate.hbm2ddl.auto", "update"); // Automatically update schema
+        jpaProperties.put("hibernate.show_sql", "true"); // Show SQL queries in the console
+        jpaProperties.put("hibernate.format_sql", "true"); // Format SQL queries for readability
+        jpaProperties.put("hibernate.use_sql_comments", "true"); // Add comments in SQL logs
+        factory.setJpaProperties(jpaProperties);
         return factory;
     }
 

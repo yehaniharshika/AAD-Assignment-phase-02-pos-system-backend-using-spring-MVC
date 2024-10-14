@@ -1,5 +1,6 @@
 package lk.ijse.aadassignmentphase02possystembackendusingspringmvc.dto.impl;
 
+import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.dto.OrderStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class OrderDTO {
+public class OrderDTO implements OrderStatus {
     private String orderId;
     private String orderDate;
     private String customerId;

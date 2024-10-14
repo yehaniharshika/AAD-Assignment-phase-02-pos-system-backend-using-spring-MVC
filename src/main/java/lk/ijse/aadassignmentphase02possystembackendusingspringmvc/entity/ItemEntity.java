@@ -13,13 +13,14 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "item")
+
 public class ItemEntity implements SuperEntity{
     @Id
     private String  itemCode;
     private String  itemName;
     private String  unitPrice;
     private String  qtyOnHand;
-    @ManyToMany(mappedBy = "items",fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "items",fetch = FetchType.LAZY)
     @JsonIgnore
     private List<OrderEntity> orders;
 }

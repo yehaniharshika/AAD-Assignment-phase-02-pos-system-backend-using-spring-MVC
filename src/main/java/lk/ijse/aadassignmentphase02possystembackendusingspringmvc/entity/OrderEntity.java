@@ -26,7 +26,7 @@ public class OrderEntity implements SuperEntity{
     private CustomerEntity customer;
 
     //Many-to-Many relationship with ItemEntity
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "orderDetails",
             joinColumns = @JoinColumn(name = "orderId"),
