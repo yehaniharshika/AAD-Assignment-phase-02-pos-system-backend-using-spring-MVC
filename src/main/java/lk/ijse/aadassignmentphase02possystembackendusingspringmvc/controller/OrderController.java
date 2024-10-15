@@ -3,6 +3,7 @@ package lk.ijse.aadassignmentphase02possystembackendusingspringmvc.controller;
 import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.dto.OrderStatus;
 import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.dto.impl.OrderDTO;
 import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.exception.DataPersistException;
+import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.exception.OrderNotFoundException;
 import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.service.OrderService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,9 +39,9 @@ public class OrderController {
     public ResponseEntity<String> generateNextOrderId(){
         try {
             String nextOrderId = orderService.generateNextOrderId();
-
             return new ResponseEntity<>(nextOrderId,HttpStatus.OK);
         }catch (Exception e){
+            e.printStackTrace();
             return  new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -48,5 +49,22 @@ public class OrderController {
     @GetMapping(value = "/{orderId}",produces = MediaType.APPLICATION_JSON_VALUE)
     public OrderStatus getSelectedOrder(@PathVariable("orderId") String orderId){
         return orderService.getOrder(orderId);
+    }
+
+    @PutMapping(value = "/{orderId}",consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> updateOrder(@PathVariable("orderId") String orderId,@RequestBody OrderDTO updateOrderDTO){
+        try {
+            if (updateOrderDTO == null){
+                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            }
+            orderService.updateOrder(orderId,updateOrderDTO);
+            return new ResponseEntity<>("order updated successfully",HttpStatus.OK);
+        }catch (OrderNotFoundException e){
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }
