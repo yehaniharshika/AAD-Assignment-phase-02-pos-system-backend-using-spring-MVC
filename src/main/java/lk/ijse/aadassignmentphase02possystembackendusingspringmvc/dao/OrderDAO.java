@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface OrderDAO extends JpaRepository<OrderEntity,String> {
-    @Query(value = "SELECT o.orderId FROM orders o ORDER BY o.orderId DESC LIMIT 1",nativeQuery = true)
+    @Query(value = "SELECT o.orderId FROM OrderEntity o ORDER BY o.orderId DESC LIMIT 1")
     String getLastOrderId();
 }

@@ -75,15 +75,20 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    @Transactional(readOnly = true)
     public String generateNextCustomerId() {
-        String lastCustomerId = customerDAO.getLastCustomerId();
+        try {
+            String lastCustomerId = customerDAO.getLastCustomerId();
 
-        if (lastCustomerId != null){
-            int nextId = Integer.parseInt(lastCustomerId.split("-")[1])+1;
-            return String.format("C00-%03d", nextId);
-        }else {
-            return "C00-001";
+            if (lastCustomerId != null) {
+                int nextId = Integer.parseInt(lastCustomerId.split("-")[1]) + 1;
+                return String.format("C00-%03d", nextId);
+            } else {
+                return "C00-001";
+            }
+        } catch (Exception e) {
+            // Log the exception for debugging purposes
+            e.printStackTrace();
+            throw new RuntimeException("Failed to generate the next customer ID", e);
         }
     }
 }

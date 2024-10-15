@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 public interface CustomerDAO extends JpaRepository<CustomerEntity,String> {
-    @Query(value = "SELECT c.customerId FROM customer c ORDER BY c.customerId DESC LIMIT 1",nativeQuery = true)
+    @Query(value = "SELECT c.customerId FROM CustomerEntity c ORDER BY c.customerId DESC LIMIT 1")
     String getLastCustomerId();
 }

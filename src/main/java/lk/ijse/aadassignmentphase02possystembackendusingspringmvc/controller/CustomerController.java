@@ -28,8 +28,10 @@ public class CustomerController {
             customerService.saveCustomer(customerDTO);
             return new ResponseEntity<>(HttpStatus.CREATED);
         }catch (DataPersistException e){
+            e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }catch (Exception e){
+            e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -53,6 +55,7 @@ public class CustomerController {
             customerService.updateCustomer(customerId,updateCustomerDTO);
             return new ResponseEntity<>("update successfully",HttpStatus.OK);
         }catch (CustomerNotFoundException e){
+            e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }catch (Exception e) {
             e.printStackTrace();
@@ -67,6 +70,7 @@ public class CustomerController {
             customerService.deleteCustomer(customerId);
             return new ResponseEntity<>("deleted successfully",HttpStatus.NO_CONTENT);
         }catch (CustomerNotFoundException e){
+            e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }catch (Exception e){
             e.printStackTrace();
@@ -80,6 +84,7 @@ public class CustomerController {
             String nextCustomerId = customerService.generateNextCustomerId();
             return new ResponseEntity<>(nextCustomerId,HttpStatus.OK);
         }catch (Exception e){
+            e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
