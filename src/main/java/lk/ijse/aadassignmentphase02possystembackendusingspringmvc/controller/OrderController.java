@@ -13,7 +13,9 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RequestMapping("api/v1/orders")
 @RestController
@@ -38,10 +40,12 @@ public class OrderController {
     }
 
     @GetMapping(value = "/generate-next-order-id",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> generateNextOrderId(){
+    public ResponseEntity<Map<String, String>> generateNextOrderId(){
         try {
             String nextOrderId = orderService.generateNextOrderId();
-            return new ResponseEntity<>(nextOrderId,HttpStatus.OK);
+            Map<String, String> orderResponse = new HashMap<>();
+            orderResponse.put("orderId",nextOrderId);
+            return new ResponseEntity<>(orderResponse,HttpStatus.OK);
         }catch (Exception e){
             e.printStackTrace();
             return  new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
