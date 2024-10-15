@@ -14,7 +14,9 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RequestMapping("api/v1/items")
 @RestController
@@ -80,11 +82,14 @@ public class ItemController {
     }
 
     @GetMapping(value = "/generate-next-item-code",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> generateNextItemCode(){
+    public ResponseEntity<Map<String, String>> generateNextItemCode(){
         try {
             String nextItemCode = itemService.generateNextItemCode();
-            return new ResponseEntity<>(nextItemCode,HttpStatus.OK);
+            Map<String, String> itemResponse = new HashMap<>();
+            itemResponse.put("itemCode",nextItemCode);
+            return new ResponseEntity<>(itemResponse,HttpStatus.OK);
         }catch (Exception e){
+            e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
