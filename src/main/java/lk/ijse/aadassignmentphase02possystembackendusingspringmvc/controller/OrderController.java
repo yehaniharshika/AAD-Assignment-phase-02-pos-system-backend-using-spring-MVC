@@ -74,4 +74,18 @@ public class OrderController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @DeleteMapping(value = "/{orderId}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> deleteOrder(@PathVariable("orderId") String orderId){
+        try {
+            orderService.deleteOrder(orderId);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }catch (OrderNotFoundException e){
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }

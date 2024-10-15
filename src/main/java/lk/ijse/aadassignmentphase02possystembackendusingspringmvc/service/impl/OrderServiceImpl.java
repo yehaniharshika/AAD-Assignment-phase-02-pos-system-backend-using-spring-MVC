@@ -92,7 +92,12 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void deleteOrder(String orderId) {
-
+        Optional<OrderEntity> findOrderToDelete = orderDAO.findById(orderId);
+        if (!findOrderToDelete.isPresent()){
+            throw new OrderNotFoundException(orderId+" order not found");
+        }else {
+            orderDAO.deleteById(orderId);
+        }
     }
 
     @Override
