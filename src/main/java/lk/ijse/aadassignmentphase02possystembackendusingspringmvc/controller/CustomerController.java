@@ -12,7 +12,9 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RequestMapping("api/v1/customers")
 @RestController
@@ -78,15 +80,16 @@ public class CustomerController {
         }
     }
 
-    @GetMapping(value = "/generate-next-customer-id",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> generateNextCustomerId(){
+    @GetMapping(value = "/generate-next-customer-id", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Map<String, String>> generateNextCustomerId() {
         try {
             String nextCustomerId = customerService.generateNextCustomerId();
-            return new ResponseEntity<>(nextCustomerId,HttpStatus.OK);
-        }catch (Exception e){
+            Map<String, String> response = new HashMap<>();
+            response.put("customerId", nextCustomerId); // Wrap the ID in a JSON object
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
     }
 }
