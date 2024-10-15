@@ -43,7 +43,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<OrderDTO> getAllOrders() {
-        return null;
+        List<OrderEntity> orderEntities = orderDAO.findAll();
+        //convert order entities to DTOs
+        return orderMapping.asOrderDTOList(orderEntities);
     }
 
     @Override
@@ -59,7 +61,6 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void updateOrder(String orderId, OrderDTO orderDTO) {
-        // Find the order by its ID
         Optional<OrderEntity> findOrder = orderDAO.findById(orderId);
 
         if (!findOrder.isPresent()) {
@@ -67,14 +68,14 @@ public class OrderServiceImpl implements OrderService {
         } else {
             OrderEntity orderEntity = findOrder.get();
 
-            // Find the customer entity using the customer ID
+            //find the customer entity using the customer ID
             Optional<CustomerEntity> customerEntity = customerDAO.findById(orderDTO.getCustomerId());
 
             if (!customerEntity.isPresent()) {
                 throw new CustomerNotFoundException("Customer not found");
             }
 
-            // Update the order details
+            //update order process
             orderEntity.setOrderDate(orderDTO.getOrderDate());
             orderEntity.setCustomer(customerEntity.get());  // Set the CustomerEntity object
             orderEntity.setTotal(orderDTO.getTotal());
@@ -83,7 +84,7 @@ public class OrderServiceImpl implements OrderService {
             orderEntity.setCash(orderDTO.getCash());
             orderEntity.setBalance(orderDTO.getBalance());
 
-            // Save the updated order back to the database
+            //save the updated order back to the database
             orderDAO.save(orderEntity);
         }
     }

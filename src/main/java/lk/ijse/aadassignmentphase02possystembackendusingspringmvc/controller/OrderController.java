@@ -13,6 +13,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RequestMapping("api/v1/orders")
 @RestController
 public class OrderController {
@@ -49,6 +51,11 @@ public class OrderController {
     @GetMapping(value = "/{orderId}",produces = MediaType.APPLICATION_JSON_VALUE)
     public OrderStatus getSelectedOrder(@PathVariable("orderId") String orderId){
         return orderService.getOrder(orderId);
+    }
+
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<OrderDTO> getAllOrders(){
+        return orderService.getAllOrders();
     }
 
     @PutMapping(value = "/{orderId}",consumes = MediaType.APPLICATION_JSON_VALUE)
