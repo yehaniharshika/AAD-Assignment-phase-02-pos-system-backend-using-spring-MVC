@@ -1,7 +1,6 @@
 <h1 align="center">
-    <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=Ubuntu&weight=1200&size=45&pause=1000&color=C21DF7&background=1511D700&width=1000&height=100&lines=POS+-+RESTful+API+with+Spring+Framework+%F0%9F%96%A5%EF%B8%8F%F0%9F%91%A9%E2%80%8D%F0%9F%92%BB" alt="Typing SVG" /></a>
+    <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=Ubuntu&weight=1200&size=44&pause=1000&color=C21DF7&background=1511D700&width=1000&height=80&lines=POS+-+RESTful+API+with+Spring+Framework+%F0%9F%96%A5%EF%B8%8F%F0%9F%91%A9%E2%80%8D%F0%9F%92%BB" alt="Typing SVG" /></a>
 </h1>
-
 **"Food Mart"** is a robust Point of Sale (POS) application tailored specifically for grocery stores, offering a streamlined and user-friendly interface to manage customer interactions, product inventories, and order transactions.<br>
 
 Built using Spring MVC, Food Mart ensures scalable and reliable performance, making it suitable for both small and large-scale grocery operations.<br>
@@ -64,12 +63,12 @@ This documentation provides insights into how the API handles various functional
 
 
 The frontend code for the POS Management System is available in a separate repository. You can find it by this link
-
+https://github.com/yehaniharshika/AAD-Assignment-phase-02-pos-system-frontend.git
 
 ## License
 © 2024 All Right Reserved Created By Yehani Harshika
 <br/>
-This project is licensed under the [MIT] license
+This project is licensed under the [MIT](License.txt) license
 
 
 
