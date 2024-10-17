@@ -31,6 +31,7 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private Mapping orderMapping;
 
+
     @Override
     public void saveOrder(OrderDTO orderDTO) {
         OrderEntity savedOrder = orderDAO.save(orderMapping.toOrderEntity(orderDTO));
@@ -38,7 +39,6 @@ public class OrderServiceImpl implements OrderService {
         if (savedOrder == null){
             throw new DataPersistException("Order not saved");
         }
-
     }
 
     @Override

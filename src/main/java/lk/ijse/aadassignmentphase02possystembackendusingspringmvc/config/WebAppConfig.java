@@ -20,7 +20,7 @@ public class WebAppConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**") // Allow all paths
-                .allowedOrigins("http://localhost:63342") // Allow your frontend's origin
+                .allowedOrigins("http://localhost:63342") // Allow your frontend origin
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
                 .allowCredentials(true);
