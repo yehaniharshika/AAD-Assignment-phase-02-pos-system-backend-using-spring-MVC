@@ -1,5 +1,5 @@
 <h1 align="center">
-    <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=Ubuntu&weight=1200&size=44&pause=1000&color=C21DF7&background=1511D700&width=1000&height=80&lines=POS+-+RESTful+API+with+Spring+Framework+%F0%9F%96%A5%EF%B8%8F%F0%9F%91%A9%E2%80%8D%F0%9F%92%BB" alt="Typing SVG" /></a>
+    <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=Ubuntu&weight=1200&size=42&pause=1000&color=C21DF7&background=1511D700&width=1000&height=80&lines=POS+-+RESTful+API+with+Spring+Framework+%F0%9F%96%A5%EF%B8%8F%F0%9F%91%A9%E2%80%8D%F0%9F%92%BB" alt="Typing SVG" /></a>
 </h1>
 **"Food Mart"** is a robust Point of Sale (POS) application tailored specifically for grocery stores, offering a streamlined and user-friendly interface to manage customer interactions, product inventories, and order transactions.<br>
 
@@ -18,7 +18,7 @@ Follow these steps to install and set up the POS Management System:
 
 ## Technologies Used
 
-- Spring Framework (Web MVC): Backend framework for building RESTful services.
+- Spring Framework (Spring Web MVC): Backend framework for building RESTful services.
 - Spring Data JPA: Repository layer for database operations.
 - Hibernate: ORM(Object Relational Mapping) for database interaction.
 
@@ -28,7 +28,7 @@ Follow these steps to install and set up the POS Management System:
 
 ## API Endpoints
 
-### 01. Customer Managenent
+### 01. Customer Management
 
 - **POST** `/customers`: Add a new customer.
 - **GET** `/customers`: Get all customers.
@@ -38,7 +38,7 @@ Follow these steps to install and set up the POS Management System:
 - **DELETE** `/customers/{customerId}`: Delete a customer by using customer ID.
 
 
-### 02. Item Managenent
+### 02. Item Management
 - **POST** `/items`: Add a new item.
 - **GET** `/items`: Get all items.
 - **GET** `/items/{itemCode}`: Get a item by using item Code.
@@ -46,7 +46,7 @@ Follow these steps to install and set up the POS Management System:
 - **PUT** `/items/{itemCode}`: Update a item by using item code.
 - **DELETE** `/items/{itemCode}`: Delete a item by using item code.
 
-### 03. Orders Managenent
+### 03. Orders Management
 - **POST** `/orders`: Place a new order.
 - **GET** `/orders`: Get all orders.
 - **GET** `/orders/{orderId}`: Get a order by using order ID.
@@ -62,7 +62,7 @@ This documentation provides insights into how the API handles various functional
 
 
 
-The frontend code for the POS Management System is available in a separate repository. You can find it by this link
+The frontend code for the POS Management System is available in a separate repository. You can find it by this link<br>
 https://github.com/yehaniharshika/AAD-Assignment-phase-02-pos-system-frontend.git
 
 ## License
