@@ -58,6 +58,7 @@ Follow these steps to install and set up the POS Management System:
 ## API Documentation
 
 You can view the detailed API documentation for the Food Mart POS System, which includes comprehensive example requests and responses, by visiting this link.
+https://documenter.getpostman.com/view/36189376/2sAXxV7WJt
 
 This documentation provides insights into how the API handles various functionalities, including order management, item handling, customer data, and more
 
