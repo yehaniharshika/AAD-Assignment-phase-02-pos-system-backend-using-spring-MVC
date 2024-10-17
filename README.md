@@ -1,8 +1,6 @@
 <h1 align="center">
-  <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=Ubuntu&weight=1200&size=29&pause=1000&color=C21DF7&background=1511D700&width=435&lines=POS+-+springMVC+Backend+%F0%9F%96%A5%EF%B8%8F%F0%9F%91%A9%E2%80%8D%F0%9F%92%BB" alt="Typing SVG" /></a>
+    <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=Ubuntu&weight=1200&size=45&pause=1000&color=C21DF7&background=1511D700&width=1000&height=100&lines=POS+-+RESTful+API+with+Spring+Framework+%F0%9F%96%A5%EF%B8%8F%F0%9F%91%A9%E2%80%8D%F0%9F%92%BB" alt="Typing SVG" /></a>
 </h1>
-
-
 
 **"Food Mart"** is a robust Point of Sale (POS) application tailored specifically for grocery stores, offering a streamlined and user-friendly interface to manage customer interactions, product inventories, and order transactions.<br>
 
@@ -19,33 +17,61 @@ Follow these steps to install and set up the POS Management System:
 4. Run the project.
 
 
-## Project Components
-**Front-end**
-
-The front-end of Food Mart is designed to deliver a user-friendly interface with smooth interactions. It utilizes HTML, CSS, JavaScript, and jQuery to create a dynamic and responsive web application, ensuring an intuitive and efficient experience for managing grocery store operations.
-
-
-**Back-end**
-
-The back-end of Food Mart is responsible for server-side operations, data processing, and business logic. Developed using Java EE and deployed on the Apache Tomcat server, it ensures reliable performance and robust transaction handling. The system effectively manages inventory, customer data, and order processing, supporting the day-to-day operations of a grocery store.
-
-
 ## Technologies Used
 
-- Java
-- MySQL
-- TomcatEE version 10.1.18
-- Simple Logging Facade for Java (SLF4J)
-- AJAX or Fetch for data handling
+- Spring Framework (Web MVC): Backend framework for building RESTful services.
+- Spring Data JPA: Repository layer for database operations.
+- Hibernate: ORM(Object Relational Mapping) for database interaction.
 
+- MySQL: Relational database to store POS data.
+- Lombok: Reduces boilerplate code (e.g., getters, setters) and supports logging with SLF4J.
+- SLF4J: Logging facade used for logging and debugging.
+
+## API Endpoints
+
+### 01. Customer Managenent
+
+- **POST** `/customers`: Add a new customer.
+- **GET** `/customers`: Get all customers.
+- **GET** `/customers/{customerId}`: Get a customer by using customer ID.
+- **GET** `/customers/generate-next-customer-id`: To get next customer ID.
+- **PUT** `/customers/{customerId}`: Update a customer by using customer ID.
+- **DELETE** `/customers/{customerId}`: Delete a customer by using customer ID.
+
+
+### 02. Item Managenent
+- **POST** `/items`: Add a new item.
+- **GET** `/items`: Get all items.
+- **GET** `/items/{itemCode}`: Get a item by using item Code.
+- **GET** `/items/generate-next-item-code`: To get next item code.
+- **PUT** `/items/{itemCode}`: Update a item by using item code.
+- **DELETE** `/items/{itemCode}`: Delete a item by using item code.
+
+### 03. Orders Managenent
+- **POST** `/orders`: Place a new order.
+- **GET** `/orders`: Get all orders.
+- **GET** `/orders/{orderId}`: Get a order by using order ID.
+- **GET** `/orders/generate-next-order-id`: To get next order Id.
+- **PUT** `/orders/{ordeId}`: Update a order by using order ID.
+- **DELETE** `/orders/{orderId}`: Delete a order by using order ID.
 
 ## API Documentation
 
-For API documentation, including available endpoints and methods, refer to
+You can view the detailed API documentation for the Food Mart POS System, which includes comprehensive example requests and responses, by visiting this link.
+
+This documentation provides insights into how the API handles various functionalities, including order management, item handling, customer data, and more
 
 
 
 The frontend code for the POS Management System is available in a separate repository. You can find it by this link
+
+
+## License
+© 2024 All Right Reserved Created By Yehani Harshika
+<br/>
+This project is licensed under the [MIT] license
+
+
 
 
 
