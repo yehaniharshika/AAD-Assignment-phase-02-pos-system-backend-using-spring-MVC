@@ -1,7 +1,8 @@
 <h1 align="center">
     <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=Ubuntu&weight=1200&size=42&pause=1000&color=C21DF7&background=1511D700&width=1000&height=80&lines=POS+-+RESTful+API+with+Spring+Framework+%F0%9F%96%A5%EF%B8%8F%F0%9F%91%A9%E2%80%8D%F0%9F%92%BB" alt="Typing SVG" /></a>
 </h1>
-**"Food Mart"** is a robust Point of Sale (POS) application tailored specifically for grocery stores, offering a streamlined and user-friendly interface to manage customer interactions, product inventories, and order transactions.<br>
+
+**Food Mart** is a robust Point of Sale (POS) application tailored specifically for grocery stores, offering a streamlined and user-friendly interface to manage customer interactions, product inventories, and order transactions.<br>
 
 Built using Spring MVC, Food Mart ensures scalable and reliable performance, making it suitable for both small and large-scale grocery operations.<br>
 
