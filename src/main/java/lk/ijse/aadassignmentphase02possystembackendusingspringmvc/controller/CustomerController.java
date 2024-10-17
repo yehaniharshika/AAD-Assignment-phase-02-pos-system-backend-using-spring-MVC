@@ -6,6 +6,8 @@ import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.dto.impl.Custo
 import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.exception.CustomerNotFoundException;
 import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.exception.DataPersistException;
 import lk.ijse.aadassignmentphase02possystembackendusingspringmvc.service.CustomerService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -22,6 +24,7 @@ public class CustomerController {
 
     @Autowired
     private CustomerService customerService;
+    static Logger logger = LoggerFactory.getLogger(CustomerController.class);
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -40,11 +43,13 @@ public class CustomerController {
 
     @GetMapping(value = "/{customerId}",produces = MediaType.APPLICATION_JSON_VALUE)
     public CustomerStatus getSelectedCustomer(@PathVariable("customerId") String customerId){
+        logger.info("request to get selected customer");
         return customerService.getCustomer(customerId);
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<CustomerDTO> getAllCustomers(){
+        logger.info("request to fetch all customers");
         return customerService.getAllCustomers();
     }
 
